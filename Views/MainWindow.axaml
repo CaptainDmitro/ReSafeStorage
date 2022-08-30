@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ReSafeStorage.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ReSafeStorage.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ReSafeStorage"
+        CanResize="False">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid x:Name="GridControl">
+        <StackPanel Margin="45,20">
+            <!-- <Image Source="C:\Users\Dmitry\source\repos\SafeStorage\Assets\logo.png" Width="120" Height="120" Margin="120,-25"/> -->
+            <Border Background="White" Margin="10 30" CornerRadius="5" Height="260">
+                <StackPanel Margin="10">
+                    <!---
+                    <ComboBox Margin="15" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Region">
+                        <ComboBoxItem Content="RU"/>
+                    </ComboBox>
+                    -->
+                    <TextBox x:Name="TextBoxUsername" Margin="15" Text="{Binding UserName}"/>
+                    <TextBox x:Name="TextBoxPassword" Margin="15" Text="{Binding Password}"/>
+                    <!-- <PasswordBox x:Name="PasswordBox_Password" Margin="15" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" materialDesign:HintAssist.Hint="Пароль"/> -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <Button x:Name="ButtonSignIn" Margin="15 50" Command="{Binding SignIn}" Content="Войти"/>
+                        <Button x:Name="ButtonSignUp" Margin="15 50" Command="{Binding SignUp}" Content="Регистрация"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+    </Grid>
+
+</Window>
