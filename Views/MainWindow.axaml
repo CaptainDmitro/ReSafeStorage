@@ -1,8 +1,10 @@
 <Window xmlns="https://github.com/avaloniaui"
+        xmlns:rxui="clr-namespace:Avalonia.ReactiveUI;assembly=Avalonia.ReactiveUI"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:ReSafeStorage.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:reSafeStorage="clr-namespace:ReSafeStorage"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ReSafeStorage.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
@@ -11,28 +13,11 @@
         Width="450"
         Background="#FF681487"
         CanResize="False">
-
-
-    <Design.DataContext>
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-
-    <Grid x:Name="GridControl">
-        <StackPanel Margin="45,20">
-            <Image Source="/Assets/logo.png" Width="120" Height="120" Margin="120,-25"/>
-            <Border Background="White" Margin="10 30" CornerRadius="5" Height="260">
-                <StackPanel Margin="10">
-                    <TextBox x:Name="TextBoxUsername" Margin="15" Watermark="Логин..." Text="{Binding UserName}"/>
-                    <TextBox x:Name="TextBoxPassword" Margin="15" Watermark="Пароль..." PasswordChar="*" Text="{Binding Password}"/>
-                    
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                        <Button x:Name="ButtonSignIn" Margin="15 50" Command="{Binding SignIn}" Content="Войти"/>
-                        <Button x:Name="ButtonSignUp" Margin="15 50" Command="{Binding SignUp}" Content="Регистрация"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
-        </StackPanel>
-
-    </Grid>
+    
+    <rxui:RoutedViewHost Grid.Row="0" Router="{Binding Router}">
+        <rxui:RoutedViewHost.ViewLocator>
+            <reSafeStorage:AppViewLocator />
+        </rxui:RoutedViewHost.ViewLocator>
+    </rxui:RoutedViewHost>
 
 </Window>

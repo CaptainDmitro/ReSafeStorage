@@ -11,31 +11,18 @@ using ReSafeStorage.Service;
 
 namespace ReSafeStorage.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase, IScreen
     {
-        private IAuthService _authService;
-        private string _userName = "";
-        private string _password = "";
-
-        public string UserName
-        {
-            get => _userName;
-            set => this.RaiseAndSetIfChanged(ref _userName, value);
-        }
-        
-        public string Password
-        {
-            get => _password;
-            set => this.RaiseAndSetIfChanged(ref _password, value);
-        }
-
         public MainWindowViewModel(IAuthService authService)
         {
-            _authService = authService;
+            Router.Navigate.Execute(new AuthViewModel(this, Router));
+            GoNext = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(new AuthViewModel(this, Router)));
         }
+        public ReactiveCommand<Unit, IRoutableViewModel> GoNext { get; }
+        public ReactiveCommand<Unit, Unit> GoBack => Router.NavigateBack;
 
-        // TODO: Move signIn/signUp logic to repository
-        private void SignIn() => _authService.SignIn(UserName, Password);
-        private void SignUp() => _authService.SignUp(UserName, Password);
+        public RoutingState Router { get; } = new RoutingState();
+
+
     }
 }
