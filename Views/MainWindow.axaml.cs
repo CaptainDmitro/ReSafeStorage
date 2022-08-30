@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
 using ReSafeStorage.ViewModels;
@@ -10,7 +11,8 @@ namespace ReSafeStorage.Views
         public MainWindow()
         {
             this.WhenActivated(disposables => { });
-            InitializeComponent();
+            // InitializeComponent();
+            AvaloniaXamlLoader.Load(this);
         }
     }
 }

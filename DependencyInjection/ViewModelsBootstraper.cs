@@ -1,3 +1,4 @@
+using ReactiveUI;
 using ReSafeStorage.Service;
 using ReSafeStorage.ViewModels;
 using Splat;
@@ -11,5 +12,6 @@ public static class ViewModelsBootstraper
         services.Register(() => new MainWindowViewModel(
             resolver.GetService<IAuthService>()
         ));
+        // services.Register<IViewFor<AuthViewModel>>((() => new AuthViewModel()));
     }
 }

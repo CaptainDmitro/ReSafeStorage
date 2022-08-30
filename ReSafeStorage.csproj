@@ -29,10 +29,4 @@
         <PackageReference Include="Material.Avalonia" Version="3.0.0-rc0.99-nightly" />
         <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
     </ItemGroup>
-    <ItemGroup>
-      <Compile Update="Views\AuthView.axaml.cs">
-        <DependentUpon>ControlView.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-    </ItemGroup>
 </Project>

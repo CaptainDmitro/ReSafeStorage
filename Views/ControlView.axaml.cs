@@ -7,9 +7,9 @@ using ReSafeStorage.ViewModels;
 
 namespace ReSafeStorage.Views;
 
-public partial class AuthView : ReactiveUserControl<AuthViewModel>
+public partial class ControlView : ReactiveUserControl<ControlViewModel>
 {
-    public AuthView()
+    public ControlView()
     {
         InitializeComponent();
     }

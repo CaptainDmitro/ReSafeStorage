@@ -1,6 +1,7 @@
 using System;
 using ReactiveUI;
 using ReSafeStorage.Service;
+using Splat;
 
 namespace ReSafeStorage.ViewModels;
 
@@ -30,9 +31,12 @@ public class AuthViewModel : ViewModelBase, IRoutableViewModel
         HostScreen = screen;
         _authService = new AuthService();
         Router = router;
+        var r = Locator.Current.GetService<RoutingState>();
+        Console.WriteLine($"r = {r}");
+        Console.WriteLine($"router = {Router}");
     }
     
     // private void SignIn() => _authService.SignIn(UserName, Password);
-    private void SignIn() { Router.Navigate.Execute(new AuthViewModel(HostScreen, Router)); }
+    private void SignIn() { Router.Navigate.Execute(new ControlViewModel(HostScreen, Router)); }
     private void SignUp() => _authService.SignUp(UserName, Password);
 }
