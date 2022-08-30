@@ -29,9 +29,9 @@ namespace ReSafeStorage.ViewModels
             set => this.RaiseAndSetIfChanged(ref _password, value);
         }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IAuthService authService)
         {
-            _authService = new AuthService();
+            _authService = authService;
         }
 
         // TODO: Move signIn/signUp logic to repository

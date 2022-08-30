@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using ReSafeStorage.ViewModels;
 using ReSafeStorage.Views;
+using Splat;
 
 namespace ReSafeStorage
 {
@@ -17,9 +18,10 @@ namespace ReSafeStorage
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
+                Bottstraper.Register(Locator.CurrentMutable, Locator.Current);
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(),
+                    DataContext = Locator.Current.GetService<MainWindowViewModel>(),
                 };
             }
 
